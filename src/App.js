@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, NavLink, Navigate } from 'react-router-dom'
 import Home from './components/Home'
 import Users from './components/Users'
 import Contactus from './components/Contactus'
@@ -24,19 +24,19 @@ function App() {
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               {/* link for home */}
               <li className="nav-item">
-                <Link className="nav-link" to="">Home</Link>
+                <NavLink className="nav-link" to="">Home</NavLink>
               </li>
               {/* link for users */}
               <li className="nav-item">
-                <Link className="nav-link" to="users">Users</Link>
+                <NavLink className="nav-link" to="users">Users</NavLink>
               </li>
               {/* link for contactus */}
               <li className="nav-item">
-                <Link className="nav-link" to="contactus">Contactus</Link>
+                <NavLink className="nav-link" to="contactus">Contactus</NavLink>
               </li>
               {/* link for technologies */}
               <li className="nav-item">
-                <Link className="nav-link" to="technologies">Technologies</Link>
+                <NavLink className="nav-link" to="technologies">Technologies</NavLink>
               </li>
 
             </ul>
@@ -58,6 +58,9 @@ function App() {
         <Route path='technologies' element={<Technologies />} >
           {/* nested route for html */}
           <Route path="html" element={<Html />} />
+          {/* dealing with emprty path in nested routes */}
+          <Route path="" element={<Navigate replace to="javascript" />} />
+
           {/* nested route for javascript */}
           <Route path="javascript" element={<Javascript />} />
         </Route>

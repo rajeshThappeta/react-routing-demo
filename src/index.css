@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.active{
+ font-weight: bold;
+/* // background-color: cornflowerblue; */
+ background-image: linear-gradient(to bottom,rgb(95, 95, 161),rgb(143, 143, 1));
+
+}
+
+.active:hover{
+  background-color: darkgray;
+}

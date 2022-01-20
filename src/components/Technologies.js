@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, NavLink } from 'react-router-dom'
 
 function Technologies() {
     return (
@@ -7,10 +7,10 @@ function Technologies() {
             {/* links */}
             <ul className="nav nav-pills justify-content-around">
                 <li className="nav-item">
-                    <Link className="nav-link" to="html">HTML</Link>
+                    <NavLink className="nav-link" to="html">HTML</NavLink>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="javascript">JavaScript</Link>
+                    <NavLink className="nav-link" to="javascript">JavaScript</NavLink>
                 </li>
 
             </ul>
