@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 
@@ -6,12 +6,14 @@ function Contactus() {
 
     const { register, handleSubmit, formState: { errors } } = useForm()
 
+    let [usersList, setUsersList] = useState([])
 
-
+    //console.log(errors);
 
     //form submission
     const onFormSubmit = (userObj) => {
-        console.log(userObj);
+        // console.log(userObj);
+        setUsersList([...usersList, userObj])
     }
 
 
@@ -50,35 +52,67 @@ function Contactus() {
                 </div>
                 {/* skills */}
                 <div className="mb-3">
-                    <label>Select skills</label>
+                    {/* <label>Select skills</label> */}
                     {/* checkbox 1 */}
-                    <div className="form-check">
-                        <input type="checkbox" id="js" className="form-check-input" {...register("javascript")} />
+                    {/* <div className="form-check">
+                        <input type="checkbox" id="js" className="form-check-input" {...register("skills")} value="javascript" />
                         <label htmlFor="js" className="form-check-label">JavaScript</label>
-                    </div>
+                    </div> */}
                     {/* checkbox 2 */}
-                    <div className="form-check">
-                        <input type="checkbox" id="react" className="form-check-input" {...register("react")} />
+                    {/* <div className="form-check">
+                        <input type="checkbox" id="react" className="form-check-input" {...register("skills")} value="react" />
                         <label htmlFor="react" className="form-check-label">React</label>
-                    </div>
+                    </div> */}
                     {/* checkbox 3 */}
-                    <div className="form-check">
-                        <input type="checkbox" id="angular" className="form-check-input" {...register("angular")} />
+                    {/* <div className="form-check">
+                        <input type="checkbox" id="angular" className="form-check-input" {...register("skills", { required: true })} value="angular" />
                         <label htmlFor="angular" className="form-check-label">Angular</label>
-                    </div>
-
+                    </div> */}
+                    {/* validation error msg */}
+                    {errors.skills?.type == 'required' && <p className='text-danger'>* Atleast one skill shoud be selected</p>}
                 </div>
                 {/* feedback */}
                 <div className="mb-3">
-                    <label htmlFor="feedback">Feedback</label>
-                    <textarea name="" id="" rows="5" className="form-control" {...register("feedback", { required: true })}></textarea>
+                    {/* <label htmlFor="feedback">Feedback</label>
+                    <textarea name="" id="" rows="5" className="form-control" {...register("feedback", { required: true })}></textarea> */}
                     {/* validation error msg for required of feedback */}
                     {errors.feedback?.type === 'required' && <p className='text-danger'>* Feedback is required</p>}
                 </div>
                 {/* submit button */}
-                <button type="submit" className="btn btn-success d-block mx-auto">Send</button>
+                <button type="submit" className="btn btn-success d-block mx-auto">Add user</button>
             </form>
-        </div>
+
+            {/* table view of users list */}
+            <p className="display-2 text-center text-danger">List of users</p>
+            <div className="container">
+                {/* if userList if empty */}
+                {usersList.length == 0 && <h1 className='text-warning text-center'>List is empty</h1>}
+                {/* if userslist is non-empty */}
+                {usersList.length !== 0 &&
+                    <table className="table text-center">
+                        {/* thead */}
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Date of birth</th>
+                            </tr>
+                        </thead>
+                        {/* tbody */}
+                        <tbody>
+                            {
+                                usersList.map((userObj, index) => <tr key={index}>
+                                    <td>{userObj.username}</td>
+                                    <td>{userObj.email}</td>
+                                    <td>{userObj.dob}</td>
+                                </tr>)
+                            }
+                        </tbody>
+                    </table>
+                }
+
+            </div>
+        </div >
     )
 }
 

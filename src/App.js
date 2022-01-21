@@ -5,6 +5,7 @@ import Contactus from './components/Contactus'
 import Technologies from './components/Technologies'
 import Html from './components/Html'
 import Javascript from './components/Javascript'
+import Products from './components/Products'
 
 
 
@@ -34,6 +35,10 @@ function App() {
               <li className="nav-item">
                 <NavLink className="nav-link" to="contactus">Contactus</NavLink>
               </li>
+               {/* link for contactus */}
+               <li className="nav-item">
+                <NavLink className="nav-link" to="products">Products</NavLink>
+              </li>
               {/* link for technologies */}
               <li className="nav-item">
                 <NavLink className="nav-link" to="technologies">Technologies</NavLink>
@@ -54,6 +59,8 @@ function App() {
         <Route path="users" element={<Users />} />
         {/* route for contactus */}
         <Route path='contactus' element={<Contactus />} />
+         {/* route for contactus */}
+         <Route path='products' element={<Products />} />
         {/* route for technologies */}
         <Route path='technologies' element={<Technologies />} >
           {/* nested route for html */}
